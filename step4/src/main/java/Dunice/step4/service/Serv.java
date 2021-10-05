@@ -20,5 +20,5 @@ public interface Serv {
     boolean delete(int id);
     boolean deleteStat(boolean status);
     int countStat(boolean status);
-    List countStatP(Page<ToDo> page);
+
 }
