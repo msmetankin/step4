@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class ServRelease {
+public class ServRelease implements Serv{
 
     SimpleDateFormat datac = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault());
     private final ToDoRepo todoRepository;
