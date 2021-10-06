@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import net.minidev.json.JSONObject;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.*;
 import org.springframework.http.*;
 import org.springframework.validation.BindingResult;
@@ -21,6 +22,7 @@ import java.util.*;
 @org.springframework.stereotype.Controller
 @RequestMapping("/api/v1")
 public class Control {
+    @Autowired
     private final Serv todoService;
 
     @Autowired

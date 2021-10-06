@@ -1,13 +1,15 @@
 package Dunice.step4.service;
 import Dunice.step4.modelToDo.ToDo;
 import Dunice.step4.repos.ToDoRepo;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class ServRelease implements Serv{
+@Configuration
+public class ServRelease implements Serv {
 
     SimpleDateFormat datac = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault());
     private final ToDoRepo todoRepository;
