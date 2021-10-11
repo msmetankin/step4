@@ -3,6 +3,7 @@ import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
@@ -23,12 +24,14 @@ public class ToDo {
     public interface UpdateStatus extends Exist{}
 
     @Null(groups = {ToDo.New.class}, message = "Id is generated automatically")
+    @NotBlank
     @NotNull(groups = {ToDo.Update.class, ToDo.UpdateText.class, ToDo.UpdateStatus.class}, message = "Id is mandatory")
     @Id
     @Column(name="id" )
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     @Null(groups = {ToDo.UpdateStatus.class})
+    @NotBlank
     @NotNull(groups = {ToDo.New.class, ToDo.UpdateText.class},message = "Text is mandatory")
     @Column(name="text")
     private String text;

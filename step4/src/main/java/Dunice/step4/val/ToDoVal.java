@@ -1,6 +1,9 @@
 package Dunice.step4.val;
 
 import lombok.*;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
@@ -24,7 +27,7 @@ public class ToDoVal {
     private int id;
     @NotNull(groups = {New.class, Update.class},message = "CreatedDate is mandatory")
     private String createdat;
-    @NotNull(groups = {New.class, Update.class},message = "Text is mandatory")
+    @NotBlank@NotNull(groups = {New.class, Update.class},message = "Text is mandatory")
     private String text;
     @NotNull(groups = {New.class, Update.class},message = "Status is mandatory")
     private boolean status;

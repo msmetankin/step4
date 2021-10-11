@@ -16,9 +16,12 @@ import org.springframework.http.*;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.transaction.Transactional;
 import java.util.*;
 @AllArgsConstructor
 @org.springframework.stereotype.Controller
+@CrossOrigin
 @RequestMapping("/api/v1")
 public class Control {
     @Autowired
@@ -63,7 +66,7 @@ public class Control {
             int numberOfElements = ready + notReady;
             Pageable pageable = PageRequest.of(page-1, perPage, Sort.by("id").ascending());
             Page<ToDo> todo = todoService.readAll(pageable);
-            Map<String, Object> map = new HashMap<String, Object>();
+            Map<String, Object> map = new HashMap<>();
             map.put("content", todo.getContent());
             map.put("ready", ready);
             map.put("numberOfElements", numberOfElements);
@@ -83,7 +86,7 @@ public class Control {
             int numberOfElements = ready + notReady;
             Pageable pageable = PageRequest.of(page-1, perPage, Sort.by("id").ascending());
             Page<ToDo> todo = todoService.findByActive(status, pageable);
-            Map<String, Object> map = new HashMap<String, Object>();
+            Map<String, Object> map = new HashMap<>();
             map.put("content", todo.getContent());
             map.put("ready", ready);
             map.put("numberOfElements", numberOfElements);
@@ -163,7 +166,7 @@ public class Control {
             return RespoHand.generateResponse(e.getMessage(), HttpStatus.NOT_FOUND, null);
         }
     }
-
+    @Transactional
     @DeleteMapping(value = "/todo")
     public ResponseEntity<?> deleteStat() {
         try {
